@@ -273,7 +273,7 @@ mod test {
     use crate::sinks::util::{BatchSink, BatchSize};
     use crate::{
         buffers::Acker,
-        event::metric::{Metric, MetricValue},
+        event::metric::{Metric, MetricValue, StatisticKind},
         runtime::Runtime,
         test_util::runtime,
         Event,
@@ -775,6 +775,7 @@ mod test {
                 value: MetricValue::Distribution {
                     values: vec![2.0],
                     sample_rates: vec![10],
+                    statistic: StatisticKind::Histogram,
                 },
             });
             events.push(event);
@@ -789,6 +790,7 @@ mod test {
                 value: MetricValue::Distribution {
                     values: vec![i as f64],
                     sample_rates: vec![10],
+                    statistic: StatisticKind::Histogram,
                 },
             });
             events.push(event);
@@ -817,6 +819,7 @@ mod test {
                     value: MetricValue::Distribution {
                         values: vec![2.0],
                         sample_rates: vec![50],
+                        statistic: StatisticKind::Histogram
                     },
                 },
                 Metric {
@@ -827,6 +830,7 @@ mod test {
                     value: MetricValue::Distribution {
                         values: vec![3.0],
                         sample_rates: vec![10],
+                        statistic: StatisticKind::Histogram
                     },
                 },
                 Metric {
@@ -837,6 +841,7 @@ mod test {
                     value: MetricValue::Distribution {
                         values: vec![4.0],
                         sample_rates: vec![10],
+                        statistic: StatisticKind::Histogram
                     },
                 },
                 Metric {
@@ -847,6 +852,7 @@ mod test {
                     value: MetricValue::Distribution {
                         values: vec![5.0],
                         sample_rates: vec![10],
+                        statistic: StatisticKind::Histogram
                     }
                 },
             ]
