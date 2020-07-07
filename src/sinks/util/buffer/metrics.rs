@@ -217,13 +217,13 @@ impl Batch for MetricBuffer {
             .into_iter()
             .map(|e| {
                 let mut metric = e.0;
-                if let MetricValue::Distribution {
+                if let MetricValue::Samples {
                     values,
                     sample_rates,
                 } = metric.value
                 {
                     let compressed = compress_distribution(values, sample_rates);
-                    metric.value = MetricValue::Distribution {
+                    metric.value = MetricValue::Samples {
                         values: compressed.0,
                         sample_rates: compressed.1,
                     };
@@ -772,7 +772,7 @@ mod test {
                 timestamp: None,
                 tags: Some(tag("production")),
                 kind: MetricKind::Incremental,
-                value: MetricValue::Distribution {
+                value: MetricValue::Samples {
                     values: vec![2.0],
                     sample_rates: vec![10],
                     statistic: StatisticKind::Histogram,
@@ -787,7 +787,7 @@ mod test {
                 timestamp: None,
                 tags: Some(tag("production")),
                 kind: MetricKind::Incremental,
-                value: MetricValue::Distribution {
+                value: MetricValue::Samples {
                     values: vec![i as f64],
                     sample_rates: vec![10],
                     statistic: StatisticKind::Histogram,
@@ -816,7 +816,7 @@ mod test {
                     timestamp: None,
                     tags: Some(tag("production")),
                     kind: MetricKind::Incremental,
-                    value: MetricValue::Distribution {
+                    value: MetricValue::Samples {
                         values: vec![2.0],
                         sample_rates: vec![50],
                         statistic: StatisticKind::Histogram
@@ -827,7 +827,7 @@ mod test {
                     timestamp: None,
                     tags: Some(tag("production")),
                     kind: MetricKind::Incremental,
-                    value: MetricValue::Distribution {
+                    value: MetricValue::Samples {
                         values: vec![3.0],
                         sample_rates: vec![10],
                         statistic: StatisticKind::Histogram
@@ -838,7 +838,7 @@ mod test {
                     timestamp: None,
                     tags: Some(tag("production")),
                     kind: MetricKind::Incremental,
-                    value: MetricValue::Distribution {
+                    value: MetricValue::Samples {
                         values: vec![4.0],
                         sample_rates: vec![10],
                         statistic: StatisticKind::Histogram
@@ -849,7 +849,7 @@ mod test {
                     timestamp: None,
                     tags: Some(tag("production")),
                     kind: MetricKind::Incremental,
-                    value: MetricValue::Distribution {
+                    value: MetricValue::Samples {
                         values: vec![5.0],
                         sample_rates: vec![10],
                         statistic: StatisticKind::Histogram
