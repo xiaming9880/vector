@@ -260,7 +260,7 @@ fn encode_events(
                     &mut output,
                 );
             }
-            MetricValue::Samples {
+            MetricValue::Distribution {
                 values,
                 sample_rates,
                 statistic: _,
@@ -586,7 +586,7 @@ mod tests {
                 timestamp: Some(ts()),
                 tags: Some(tags()),
                 kind: MetricKind::Incremental,
-                value: MetricValue::Samples {
+                value: MetricValue::Distribution {
                     values: vec![1.0, 2.0, 3.0],
                     sample_rates: vec![3, 3, 2],
                     statistic: StatisticKind::Histogram,
@@ -597,7 +597,7 @@ mod tests {
                 timestamp: Some(ts()),
                 tags: None,
                 kind: MetricKind::Incremental,
-                value: MetricValue::Samples {
+                value: MetricValue::Distribution {
                     values: (0..20).map(f64::from).collect::<Vec<_>>(),
                     sample_rates: vec![1; 20],
                     statistic: StatisticKind::Histogram,
@@ -608,7 +608,7 @@ mod tests {
                 timestamp: Some(ts()),
                 tags: None,
                 kind: MetricKind::Incremental,
-                value: MetricValue::Samples {
+                value: MetricValue::Distribution {
                     values: (1..5).map(f64::from).collect::<Vec<_>>(),
                     sample_rates: (1..5).collect::<Vec<_>>(),
                     statistic: StatisticKind::Histogram,
@@ -685,7 +685,7 @@ mod tests {
             timestamp: Some(ts()),
             tags: Some(tags()),
             kind: MetricKind::Incremental,
-            value: MetricValue::Samples {
+            value: MetricValue::Distribution {
                 values: vec![],
                 sample_rates: vec![],
                 statistic: StatisticKind::Histogram,
@@ -703,7 +703,7 @@ mod tests {
             timestamp: Some(ts()),
             tags: Some(tags()),
             kind: MetricKind::Incremental,
-            value: MetricValue::Samples {
+            value: MetricValue::Distribution {
                 values: vec![1.0, 2.0],
                 sample_rates: vec![0, 0],
                 statistic: StatisticKind::Histogram,
@@ -721,7 +721,7 @@ mod tests {
             timestamp: Some(ts()),
             tags: Some(tags()),
             kind: MetricKind::Incremental,
-            value: MetricValue::Samples {
+            value: MetricValue::Distribution {
                 values: vec![1.0],
                 sample_rates: vec![1, 2, 3],
                 statistic: StatisticKind::Histogram,
