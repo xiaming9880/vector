@@ -98,7 +98,7 @@ UDP socket address to bind to.
   block={true}
   defaultValue="counter"
   select={false}
-  values={[{"label":"Counter","value":"counter"},{"label":"Gauge","value":"gauge"},{"label":"Set","value":"set"},{"label":"Timer","value":"timer"},{"label":"Distribution","value":"distribution"}]}>
+  values={[{"label":"Counter","value":"counter"},{"label":"Gauge","value":"gauge"},{"label":"Set","value":"set"},{"label":"Timer","value":"timer"},{"label":"Summary","value":"summary"}]}>
 
 <TabItem value="counter">
 
@@ -198,7 +198,7 @@ A metric event will be output with the following structure:
 
 </TabItem>
 
-<TabItem value="distribution">
+<TabItem value="summary">
 
 Given the following input:
 
