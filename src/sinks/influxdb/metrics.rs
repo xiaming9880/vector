@@ -263,6 +263,7 @@ fn encode_events(
             MetricValue::Samples {
                 values,
                 sample_rates,
+                statistic: _,
             } => {
                 let fields = encode_distribution(&values, &sample_rates);
 
