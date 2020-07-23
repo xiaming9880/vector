@@ -1,5 +1,5 @@
 ---
-last_modified_on: "2020-07-13"
+last_modified_on: "2020-07-23"
 delivery_guarantee: "best_effort"
 component_title: "Statsd"
 description: "The Vector `statsd` source ingests data through the StatsD UDP protocol and outputs `metric` events."
@@ -98,7 +98,7 @@ UDP socket address to bind to.
   block={true}
   defaultValue="counter"
   select={false}
-  values={[{"label":"Counter","value":"counter"},{"label":"Gauge","value":"gauge"},{"label":"Set","value":"set"},{"label":"Timer","value":"timer"}]}>
+  values={[{"label":"Counter","value":"counter"},{"label":"Gauge","value":"gauge"},{"label":"Set","value":"set"},{"label":"Timer","value":"timer"},{"label":"Distribution","value":"distribution"}]}>
 
 <TabItem value="counter">
 
@@ -191,9 +191,38 @@ A metric event will be output with the following structure:
     "type": "distribution",
     "values": [0.022], // ms become seconds
     "sample_rates": [10]
+    "statistic": "histogram"
   }
 }
 ```
+
+</TabItem>
+
+<TabItem value="distribution">
+
+Given the following input:
+
+```text title="Example input"
+request.response_time:2|d|@0.2
+```
+
+A metric event will be output with the following structure:
+
+```json title="Example metric event"
+{
+  "name": "request.response_time",
+  "kind": "incremental",
+  "timestamp": "2019-05-02T12:22:46.658503Z" // current time / time ingested
+  "value": {
+    "type": "distribution",
+    "values": [2],
+    "sample_rates": [5]
+    "statistic": "summary"
+  }
+}
+```Corresponds to [distribution][urls.datadog_distribution] in DataDog. 
+
+
 
 </TabItem>
 </Tabs>
@@ -220,4 +249,5 @@ data model page for more info.
 
 [docs.configuration#environment-variables]: /docs/setup/configuration/#environment-variables
 [docs.data-model.metric]: /docs/about/data-model/metric/
+[urls.datadog_distribution]: https://docs.datadoghq.com/developers/metrics/types/?tab=distribution#definition
 [urls.statsd_udp_protocol]: https://github.com/b/statsd_spec

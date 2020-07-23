@@ -1,5 +1,5 @@
 ---
-last_modified_on: "2020-07-13"
+last_modified_on: "2020-07-23"
 delivery_guarantee: "best_effort"
 component_title: "Statsd"
 description: "The Vector `statsd` sink streams `metric` events to StatsD metrics service."
@@ -143,6 +143,7 @@ gorets:1|c
 glork:320|ms
 gaugor:333|g
 uniques:765|s
+request:4|d
 ```
 
 ## How It Works

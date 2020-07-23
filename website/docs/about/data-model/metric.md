@@ -1,5 +1,5 @@
 ---
-last_modified_on: "2020-07-13"
+last_modified_on: "2020-07-23"
 title: Metric Event
 description: A detailed guide on Vector's internal metric data model.
 ---
@@ -492,6 +492,29 @@ A distribution represents a distribution of sampled values.
 #### sample_rates
 
 The rate at which each individual value was sampled.
+
+
+
+</Field>
+<Field
+  common={true}
+  defaultValue={null}
+  enumValues={null}
+  examples={["histogram","summary"]}
+  groups={[]}
+  name={"statistic"}
+  path={"distribution"}
+  relevantWhen={null}
+  required={true}
+  templateable={false}
+  type={"string"}
+  unit={null}
+  warnings={[]}
+  >
+
+#### statistic
+
+Statistic to be applied on the samples.
 
 
 
