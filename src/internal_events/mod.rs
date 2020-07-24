@@ -4,6 +4,7 @@ mod blackhole;
 mod elasticsearch;
 mod file;
 mod json;
+mod kafka;
 #[cfg(feature = "sources-kubernetes-logs")]
 mod kubernetes_logs;
 #[cfg(feature = "transforms-lua")]
@@ -28,6 +29,7 @@ pub use self::blackhole::*;
 pub use self::elasticsearch::*;
 pub use self::file::*;
 pub use self::json::*;
+pub use self::kafka::*;
 #[cfg(feature = "sources-kubernetes-logs")]
 pub use self::kubernetes_logs::*;
 #[cfg(feature = "transforms-lua")]
