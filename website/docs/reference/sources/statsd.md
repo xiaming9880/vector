@@ -1,5 +1,5 @@
 ---
-last_modified_on: "2020-07-23"
+last_modified_on: "2020-07-26"
 delivery_guarantee: "best_effort"
 component_title: "Statsd"
 description: "The Vector `statsd` source ingests data through the StatsD UDP protocol and outputs `metric` events."
@@ -220,7 +220,7 @@ A metric event will be output with the following structure:
     "statistic": "summary"
   }
 }
-```Corresponds to [distribution][urls.datadog_distribution] in DataDog. 
+```Corresponds to [distribution][urls.datadog_distribution] in DataDog.
 
 
 
