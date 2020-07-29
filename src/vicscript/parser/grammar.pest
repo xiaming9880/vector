@@ -1,0 +1,30 @@
+mapping = _{ SOI ~ assignment ~ (NEWLINE+ ~ assignment)* ~ EOI }
+
+assignment = { dot_path ~ "=" ~ query }
+
+dot_path = @{ "." ~ ('a'..'z' | 'A'..'Z' | "_" | "-" | "." )+ }
+
+query = _{ value | dot_path }
+
+value = _{ string | number | boolean | null }
+
+boolean = { "true" | "false" }
+
+null = { "null" }
+
+string = ${ "\"" ~ inner ~ "\"" }
+inner = @{ char* }
+char = {
+    !("\"" | "\\") ~ ANY
+    | "\\" ~ ("\"" | "\\" | "/" | "b" | "f" | "n" | "r" | "t")
+    | "\\" ~ ("u" ~ ASCII_HEX_DIGIT{4})
+}
+
+number = @{
+    "-"?
+    ~ ("0" | ASCII_NONZERO_DIGIT ~ ASCII_DIGIT*)
+    ~ ("." ~ ASCII_DIGIT*)?
+    ~ (^"e" ~ ("+" | "-")? ~ ASCII_DIGIT+)?
+}
+
+WHITESPACE = _{ " " | "\t" }

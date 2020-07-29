@@ -15,6 +15,8 @@
 extern crate tracing;
 #[macro_use]
 extern crate derivative;
+#[macro_use]
+extern crate pest_derive;
 
 #[cfg(feature = "jemallocator")]
 #[global_allocator]
@@ -55,6 +57,7 @@ pub mod transforms;
 pub mod types;
 pub mod unit_test;
 pub mod validate;
+pub mod vicscript;
 
 pub use event::Event;
 
